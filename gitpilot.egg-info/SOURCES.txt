@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+gitpilot/cli.py
+gitpilot/core.py
+gitpilot/init.py
+gitpilot.egg-info/PKG-INFO
+gitpilot.egg-info/SOURCES.txt
+gitpilot.egg-info/dependency_links.txt
+gitpilot.egg-info/entry_points.txt
+gitpilot.egg-info/requires.txt
+gitpilot.egg-info/top_level.txt

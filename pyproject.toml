@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gitpilot"
+version = "1.0.0"
+description = "AI-powered git wizard — push, branch, pull with one command"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "J-joke-r" }]
+requires-python = ">=3.10"
+dependencies = ["requests>=2.28.0"]
+keywords = ["git", "github", "automation", "ai", "ollama", "cli"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Topic :: Software Development :: Version Control :: Git",
+]
+
+[project.urls]
+Homepage = "https://github.com/J-joke-r/gitpilot"
+Issues   = "https://github.com/J-joke-r/gitpilot/issues"
+
+[project.scripts]
+gitpilot = "gitpilot.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gitpilot*"]
