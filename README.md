@@ -189,7 +189,7 @@ ollama serve
 
 ## License
 
-MIT — free to use, modify, and distribute.
+MIT
 
 ---
 
