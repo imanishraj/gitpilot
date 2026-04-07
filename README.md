@@ -1,6 +1,6 @@
 # ✈ GitPilot
 
-> Your AI-powered git wizard — push, branch, pull, and manage GitHub repos with a single command. No git knowledge required.
+> Your AI-powered git wizard — push, branch, pull, clone, and manage GitHub repos with a single command. No git knowledge required.
 
 GitPilot combines the power of **Git**, **GitHub API**, and **Ollama** (a free, fully offline AI engine) to automate your entire GitHub workflow. It reads your project code, writes a professional README, generates smart commit messages, creates your repo, and pushes — all from one interactive menu.
 
@@ -36,6 +36,7 @@ ollama serve
 - **Repo management** — checks if your repo exists on GitHub, creates it if not
 - **Branch workflow** — create, switch, and push branches easily
 - **Pull support** — pull latest changes from any branch
+- **Clone repos** — browse your own GitHub repos or paste any URL to clone directly to your laptop, then open in Cursor or VS Code automatically
 - **Error diagnosis** — when a git command fails, Ollama reads the error and tells you exactly how to fix it
 - **Secure credentials** — your GitHub token is stored locally in `~/.gitpilot_config.json`, never inside your project
 - **Media file protection** — automatically ignores `.wav`, `.mp3`, `.mp4`, and other large files
@@ -102,9 +103,23 @@ You will see:
   3.  Pull latest from GitHub
   4.  Switch branch
   5.  Project status
-  6.  Reset GitHub credentials
+  6.  Clone a repo to your laptop
+  7.  Reset GitHub credentials
   0.  Exit
 ```
+
+### Clone a repo
+
+Option 6 lets you clone in two ways:
+
+```
+  Clone options:
+
+  1. From your own GitHub repos   ← shows a numbered list of all your repos
+  2. From any GitHub URL          ← paste any public or private repo URL
+```
+
+After cloning, GitPilot asks if you want to open the project in Cursor or VS Code automatically.
 
 ### First run
 
@@ -123,7 +138,7 @@ On first launch, GitPilot asks for your GitHub credentials once and saves them s
 gitpilot --reset
 ```
 
-Or choose option 6 from the menu.
+Or choose option 7 from the menu.
 
 ---
 
@@ -189,7 +204,7 @@ ollama serve
 
 ## License
 
-MIT
+MIT — free to use, modify, and distribute.
 
 ---
 
