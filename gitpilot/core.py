@@ -401,6 +401,88 @@ def flow_switch(cwd: str):
         safe_run(f"git checkout {name}", cwd, "switch")
 
 
+def flow_clone(cwd: str, token: str, username: str):
+    header("Clone a Repository")
+
+    print("  Clone options:\n")
+    print("  1. From your own GitHub repos")
+    print("  2. From any GitHub URL\n")
+
+    choice = input("  Choose (1-2): ").strip()
+
+    if choice == "1":
+        # List user's repos from GitHub API
+        print(f"\n  Fetching your repos from GitHub...")
+        r = requests.get(
+            "https://api.github.com/user/repos?per_page=50&sort=updated",
+            headers=gh_headers(token)
+        )
+        if r.status_code != 200:
+            print("  Failed to fetch repos. Check your token.")
+            return
+
+        repos = r.json()
+        if not repos:
+            print("  No repos found on your GitHub.")
+            return
+
+        print(f"\n  Your repos:\n")
+        for i, repo in enumerate(repos, 1):
+            private = "🔒" if repo.get("private") else "🌐"
+            print(f"  {i:2}. {private} {repo['name']}")
+
+        print()
+        choice_num = input("  Enter repo number: ").strip()
+        try:
+            selected = repos[int(choice_num) - 1]
+            clone_url = selected["clone_url"].replace(
+                "https://", f"https://{token}@"
+            )
+            repo_name = selected["name"]
+        except (ValueError, IndexError):
+            print("  Invalid selection.")
+            return
+
+    elif choice == "2":
+        raw_url = ask("Paste GitHub repo URL")
+        if not raw_url:
+            return
+        # Support both https and git formats
+        raw_url = raw_url.strip().rstrip("/")
+        if raw_url.endswith(".git"):
+            clone_url = raw_url.replace("https://github.com", f"https://{token}@github.com")
+        else:
+            clone_url = raw_url.replace("https://github.com", f"https://{token}@github.com") + ".git"
+        repo_name = raw_url.rstrip("/").split("/")[-1].replace(".git", "")
+    else:
+        print("  Invalid choice.")
+        return
+
+    # Ask where to clone
+    default_dest = str(Path(cwd) / repo_name)
+    dest = ask("Clone into folder", default_dest).strip()
+    dest = dest or default_dest
+
+    if Path(dest).exists():
+        print(f"\n  Folder '{dest}' already exists.")
+        if not confirm("Clone into it anyway?"):
+            return
+
+    print(f"\n  Cloning '{repo_name}' into {dest}...")
+    parent = str(Path(dest).parent)
+    folder = Path(dest).name
+    ok = safe_run(f'git clone "{clone_url}" "{folder}"', parent, "clone")
+
+    if ok:
+        print(f"\n  Cloned successfully to: {dest}")
+
+        # Ask if they want to open in VS Code or Cursor
+        if confirm("Open in Cursor?"):
+            run(f'cursor "{dest}"', cwd)
+        elif confirm("Open in VS Code?"):
+            run(f'code "{dest}"', cwd)
+
+
 def flow_status(cwd: str):
     header("Project Status")
     if not is_git_repo(cwd):

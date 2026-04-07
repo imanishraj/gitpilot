@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 from gitpilot.core import (
     load_config, setup_config, reset_config, ollama_running,
-    flow_push, flow_branch, flow_pull, flow_switch, flow_status
+    flow_push, flow_branch, flow_pull, flow_switch, flow_status, flow_clone
 )
 
 
@@ -40,17 +40,19 @@ def main():
     print("  3.  Pull latest from GitHub")
     print("  4.  Switch branch")
     print("  5.  Project status")
-    print("  6.  Reset GitHub credentials")
+    print("  6.  Clone a repo to your laptop")
+    print("  7.  Reset GitHub credentials")
     print("  0.  Exit\n")
 
-    choice = input("  Choose (0-6): ").strip()
+    choice = input("  Choose (0-7): ").strip()
 
     if   choice == "1": flow_push(cwd, token, username)
     elif choice == "2": flow_branch(cwd, token, username)
     elif choice == "3": flow_pull(cwd)
     elif choice == "4": flow_switch(cwd)
     elif choice == "5": flow_status(cwd)
-    elif choice == "6": reset_config()
+    elif choice == "6": flow_clone(cwd, token, username)
+    elif choice == "7": reset_config()
     elif choice == "0": print("  Bye!")
     else:               print("  Invalid choice.")
 
