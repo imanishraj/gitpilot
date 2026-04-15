@@ -1,0 +1,1 @@
+Your AI-powered git wizard — automate GitHub workflows with one command. Push, branch, pull, clone, and manage repos with Ollama (offline AI). No git knowledge required.
