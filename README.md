@@ -54,7 +54,7 @@ pip install gitpilot
 ### Option 2 — Install from source
 
 ```bash
-git clone https://github.com/J-joke-r/gitpilot.git
+git clone https://github.com/imanishraj/gitpilot.git
 cd gitpilot
 pip install .
 ```
@@ -210,4 +210,4 @@ MIT — free to use, modify, and distribute.
 
 ## Author
 
-Built by [J-joke-r](https://github.com/J-joke-r) — a fun side project to make GitHub workflows effortless for every developer.
+Built by [imanishraj](https://github.com/imanishraj) — a fun side project to make GitHub workflows effortless for every developer.
