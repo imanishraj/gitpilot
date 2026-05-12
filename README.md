@@ -2,7 +2,7 @@
 
 > Your AI-powered git wizard — push, branch, pull, clone, and manage GitHub repos with a single command. No git knowledge required.
 
-GitPilot combines the power of **Git**, **GitHub API**, and **Ollama** (a free, fully offline AI engine) to automate your entire GitHub workflow. It reads your project code, writes a professional README, generates smart commit messages, creates your repo, and pushes — all from one interactive menu.
+GitPilot combines the power of **Git**, **GitHub API**, and **Ollama** (a free, fully offline AI engine) to automate your entire GitHub workflow. It reads your project code, writes a professional README for you, formats your commit messages by reading the git diff, and automatically manages your repo on GitHub.
 
 ---
 
@@ -10,7 +10,7 @@ GitPilot combines the power of **Git**, **GitHub API**, and **Ollama** (a free, 
 
 GitPilot uses **[Ollama](https://ollama.com)** to run AI models **100% locally on your machine** — no API keys, no subscriptions, no internet required for AI features.
 
-> Ollama is a powerful open-source tool that lets you run large language models like Granite, LLaMA, Mistral, and Qwen right on your laptop. It is completely free and works offline, making it ideal for developers who want AI assistance without depending on paid cloud services.
+> Ollama is a powerful open-source tool that lets you run large language models like Granite, LLaMA, Mistral, and Qwen right on your laptop. It is completely free and works offline, making it ideal for reading your code securely.
 
 - Download Ollama: **https://ollama.com/download**
 - Browse available models: **https://ollama.com/library**
@@ -54,7 +54,7 @@ pip install gitpilot
 ### Option 2 — Install from source
 
 ```bash
-git clone https://github.com/J-joke-r/gitpilot.git
+git clone https://github.com/imanishraj/gitpilot.git
 cd gitpilot
 pip install .
 ```
@@ -210,4 +210,4 @@ MIT — free to use, modify, and distribute.
 
 ## Author
 
-Built by [J-joke-r](https://github.com/J-joke-r) — a fun side project to make GitHub workflows effortless for every developer.
+Built by [imanishraj](https://github.com/imanishraj) — a fun side project to make GitHub workflows effortless for every developer.
